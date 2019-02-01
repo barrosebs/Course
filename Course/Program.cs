@@ -7,8 +7,7 @@ namespace Course
         static void Main(string[] args)
         {
 
-          
-            programas.ExercicioMatriz();
+            programas.OrderEnums();
 
         }
     }

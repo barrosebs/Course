@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Course.Entities;
+using Course.Entities.Enums;
+using System;
 using System.Globalization;
 
 namespace Course
@@ -231,13 +233,13 @@ namespace Course
             int N = int.Parse(Console.ReadLine());
 
             int soma = 0;
-                for (int i = 1; i<=N; i++)
+            for (int i = 1; i <= N; i++)
             {
                 Console.Write("Valor #{0}: ", i);
                 int valor = int.Parse(Console.ReadLine());
                 soma += valor;
             }
-            Console.WriteLine("Soma = " + soma );
+            Console.WriteLine("Soma = " + soma);
         }
 
         public void exercicioPrimeiroEFor()
@@ -257,8 +259,8 @@ namespace Course
 
         public void exercicioSegundoEFor()
         {
-            int saida_in=0;
-            int saida_out=0;
+            int saida_in = 0;
+            int saida_out = 0;
 
             int N = int.Parse(Console.ReadLine());
 
@@ -277,13 +279,13 @@ namespace Course
                 Console.WriteLine(saida_out + " ou");
             }
 
-            
+
         }
         public void triguloPOO()
         {
-            Triangulo x, y; 
-              x  = new Triangulo();
-              y  = new Triangulo();
+            Triangulo x, y;
+            x = new Triangulo();
+            y = new Triangulo();
 
             Console.WriteLine("Entre com as medidas do Triângulo X: ");
             x.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
@@ -351,7 +353,7 @@ namespace Course
 
             Console.WriteLine();
             Console.Write("Salário Bruto: ");
-            f.SalarioBruto =double.Parse(Console.ReadLine());
+            f.SalarioBruto = double.Parse(Console.ReadLine());
 
             Console.WriteLine();
             Console.Write("Imposto: ");
@@ -381,12 +383,12 @@ namespace Course
 
             Console.WriteLine();
             Console.Write("Digite as três notas do aluno: ");
-          
+
         }
 
         public static void Circulo()
         {
-         
+
 
             Console.Write("Entre com o valor do Rario: ");
             double raio = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
@@ -403,7 +405,7 @@ namespace Course
         public static void ExercicioMatriz()
         {
             int n = int.Parse(Console.ReadLine());
-            int[,] mat = new int[n,n];
+            int[,] mat = new int[n, n];
 
             for (int i = 0; i < n; i++)//percorrer linha
             {
@@ -418,7 +420,7 @@ namespace Course
             Console.WriteLine("Main diagonal: ");
             for (int i = 0; i < n; i++)
             {
-                Console.Write(mat[i, i]+ " ");
+                Console.Write(mat[i, i] + " ");
             }
             Console.WriteLine();
 
@@ -427,7 +429,7 @@ namespace Course
             {
                 for (int j = 0; j < n; j++)
                 {
-                    if (mat[i,j] < 0)
+                    if (mat[i, j] < 0)
                     {
                         count++;
                     }
@@ -435,5 +437,26 @@ namespace Course
             }
             Console.WriteLine("Negative numbers: " + count++);
         }
+
+        public static void OrderEnums()
+        {
+            Order order = new Order
+            {
+                Id = 1080,
+                Moment = DateTime.Now,
+                Status = OrderStatus.PendingPayment
+
+            };
+            Console.WriteLine(order);
+
+            string txt = OrderStatus.PendingPayment.ToString(); //convertendo enum em string
+            Console.WriteLine(txt);
+
+            OrderStatus os = Enum.Parse<OrderStatus>("Delivered");// Convertendo string tipo enum
+            Console.WriteLine(os);
+
+
+        }
+
     }
 }
