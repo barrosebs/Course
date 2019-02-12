@@ -1,6 +1,7 @@
 ﻿using Course.Entities;
 using Course.Entities.Enums;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace Course
@@ -518,6 +519,44 @@ namespace Course
 
             Console.WriteLine(p1);
             Console.WriteLine(p2);
+        }
+
+        public static void Employees()
+        {
+
+            List<Employee> list = new List<Employee>();
+            
+            Console.WriteLine("Enter the number of employees: ");
+            int n = int.Parse(Console.ReadLine());
+
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine($"Employees #{n} data:");
+                Console.WriteLine("Outsouced (y/n)? ");
+                char ch = char.Parse(Console.ReadLine());
+                Console.Write("Name: ");
+                string name = Console.ReadLine();
+                Console.WriteLine("Hours: ");
+                int hours = int.Parse(Console.ReadLine());
+                Console.WriteLine("Value per hour: ");
+                double valuePerHour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                if (ch == 'y') {
+                    Console.Write("Additional charge: ");
+                    double additionalCharge = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                    list.Add(new OutsourcedEmplyee(name, hours, valuePerHour, additionalCharge));
+                }
+                else
+                {
+                    list.Add(new Employee(name, hours, valuePerHour));
+                }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("PAYMENTS:");
+            foreach (Employee emp in list)
+            {
+                Console.WriteLine(emp.Name + " - $" + emp.Payment().ToString("F2", CultureInfo.InvariantCulture));
+            }
         }
     }
 }
